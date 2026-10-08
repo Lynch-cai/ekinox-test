@@ -1,0 +1,35 @@
+{
+  "name": "bttf-dvd-shop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24.11"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @bttf/api\" \"npm run dev -w @bttf/web\"",
+    "build": "npm run build -w @bttf/web",
+    "start": "npm run start -w @bttf/api",
+    "typecheck": "tsc && npm run typecheck --workspaces",
+    "lint": "eslint . --max-warnings 0 && prettier --check .",
+    "format": "prettier --write . && eslint --fix .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "npm run typecheck && npm run lint && npm test"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "1.17.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.19.1",
+    "concurrently": "10.0.5",
+    "eslint": "10.12.0",
+    "prettier": "3.9.9",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "typescript": "6.0.3",
+    "vitest": "5.0.3"
+  }
+}
